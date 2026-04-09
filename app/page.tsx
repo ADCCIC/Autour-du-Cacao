@@ -1,4 +1,5 @@
 import Link from "next/link";
+import NewsletterForm from "@/components/NewsletterForm";
 
 export default function HomePage() {
   return (
@@ -59,6 +60,25 @@ export default function HomePage() {
             les communautés africaines.
           </p>
         </div>
+      </section>
+
+      {/* Newsletter section */}
+      <section className="bg-amber-900 py-16 px-6 text-center">
+        <h2 className="text-2xl font-bold text-amber-50 mb-3">
+          Restez dans la boucle
+        </h2>
+        <p className="text-amber-200 mb-8 max-w-xl mx-auto">
+          Chaque nouvel épisode directement dans votre boîte mail. Deux fois par mois, pas de spam.
+        </p>
+        <div className="max-w-sm mx-auto">
+          <NewsletterForm variant="compact" />
+        </div>
+        <Link
+          href="/newsletter"
+          className="inline-block mt-4 text-sm text-amber-400 hover:text-amber-200 underline"
+        >
+          En savoir plus
+        </Link>
       </section>
 
       {/* Latest episodes teaser */}

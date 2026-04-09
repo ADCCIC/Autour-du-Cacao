@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import Script from "next/script";
+import NewsletterForm from "@/components/NewsletterForm";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -65,11 +66,27 @@ export default function RootLayout({
             <Link href="/about" className="hover:text-amber-200 transition-colors">
               À propos
             </Link>
+            <Link href="/newsletter" className="hover:text-amber-200 transition-colors">
+              Newsletter
+            </Link>
           </nav>
         </header>
         <main className="flex-1">{children}</main>
-        <footer className="bg-amber-900 text-amber-200 text-center text-sm py-4">
-          © {new Date().getFullYear()} Autour du Cacao · autourducacao.com
+        <footer className="bg-amber-900 text-amber-200 py-8 px-6">
+          <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-start justify-between">
+            <div>
+              <p className="font-bold text-amber-100 mb-1">🍫 Autour du Cacao</p>
+              <p className="text-xs text-amber-400">Le podcast qui va au-delà du chocolat</p>
+            </div>
+            <div className="w-full md:w-72">
+              <p className="text-sm font-medium text-amber-100 mb-2">Newsletter</p>
+              <p className="text-xs text-amber-400 mb-3">Chaque épisode dans votre boîte mail.</p>
+              <NewsletterForm variant="compact" />
+            </div>
+          </div>
+          <p className="text-center text-xs text-amber-600 mt-8">
+            © {new Date().getFullYear()} Autour du Cacao · autourducacao.com
+          </p>
         </footer>
       </body>
     </html>
