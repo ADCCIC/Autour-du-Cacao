@@ -6,19 +6,59 @@
 
 export const dynamic = "force-dynamic";
 
-import type { AnalyticsData } from "../api/analytics/route";
+import type { AnalyticsData } from "@/app/api/analytics/route";
 
 async function getAnalytics(): Promise<AnalyticsData> {
-  // Server-side: call our own API route
-  const base =
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
+  // Call Plausible directly from the server — avoids self-fetch issues on Vercel
+  const apiKey = process.env.PLAUSIBLE_API_KEY;
+  const siteId = process.env.PLAUSIBLE_SITE_ID;
 
-  const res = await fetch(`${base}/api/analytics`, {
-    next: { revalidate: 300 },
-  });
-  if (!res.ok) throw new Error("Failed to load analytics");
-  return res.json();
+  if (!apiKey || !siteId) {
+    return {
+      period: "30d",
+      totals: { visitors: 0, pageviews: 0, bounceRate: 0, visitDuration: 0 },
+      timeSeries: [],
+      topPages: [],
+      source: "stub",
+    };
+  }
+
+  try {
+    const encoded = encodeURIComponent(siteId);
+    const headers = { Authorization: `Bearer ${apiKey}` };
+    const opts = { headers, next: { revalidate: 300 } } as const;
+
+    const [aggregate, pages, timeSeries] = await Promise.all([
+      fetch(`https://plausible.io/api/v2/stats/aggregate?site_id=${encoded}&period=30d&metrics=visitors,pageviews,bounce_rate,visit_duration`, opts).then(r => r.json()),
+      fetch(`https://plausible.io/api/v2/stats/breakdown?site_id=${encoded}&period=30d&property=event:page&metrics=visitors,pageviews&limit=10`, opts).then(r => r.json()),
+      fetch(`https://plausible.io/api/v2/stats/timeseries?site_id=${encoded}&period=30d&metrics=visitors,pageviews`, opts).then(r => r.json()),
+    ]);
+
+    return {
+      period: "30d",
+      totals: {
+        visitors: aggregate.results?.visitors?.value ?? 0,
+        pageviews: aggregate.results?.pageviews?.value ?? 0,
+        bounceRate: aggregate.results?.bounce_rate?.value ?? 0,
+        visitDuration: aggregate.results?.visit_duration?.value ?? 0,
+      },
+      timeSeries: (timeSeries.results ?? []).map((r: { date: string; visitors: number; pageviews: number }) => ({
+        date: r.date, visitors: r.visitors, pageviews: r.pageviews,
+      })),
+      topPages: (pages.results ?? []).map((r: { page: string; visitors: number; pageviews: number }) => ({
+        page: r.page, visitors: r.visitors, pageviews: r.pageviews,
+      })),
+      source: "plausible",
+    };
+  } catch {
+    return {
+      period: "30d",
+      totals: { visitors: 0, pageviews: 0, bounceRate: 0, visitDuration: 0 },
+      timeSeries: [],
+      topPages: [],
+      source: "stub",
+    };
+  }
 }
 
 function StatCard({
