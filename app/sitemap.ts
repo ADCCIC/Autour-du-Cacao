@@ -2,17 +2,20 @@ import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/posts";
 import { fetchFeed } from "@/lib/rss";
 import { fetchYouTubeVideos } from "@/lib/youtube";
+import { fetchMediumArticles } from "@/lib/medium";
 
 const BASE_URL = "https://autourducacao.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = getAllPosts();
   const [{ episodes }, videos] = await Promise.all([fetchFeed(), fetchYouTubeVideos()]);
+  // Medium articles link out to medium.com — include /articles index in sitemap only
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
     { url: `${BASE_URL}/episodes`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE_URL}/videos`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE_URL}/articles`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE_URL}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
   ];

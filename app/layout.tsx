@@ -56,6 +56,9 @@ export default function RootLayout({
             <Link href="/videos" className="hover:text-amber-200 transition-colors">
               Vidéos
             </Link>
+            <Link href="/articles" className="hover:text-amber-200 transition-colors">
+              Articles
+            </Link>
             <Link href="/blog" className="hover:text-amber-200 transition-colors">
               Blog
             </Link>

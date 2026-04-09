@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "hosting-media.rs-prod.riverside.fm",
       },
+      {
+        protocol: "https",
+        hostname: "cdn-images-1.medium.com",
+      },
     ],
   },
 };

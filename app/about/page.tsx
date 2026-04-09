@@ -46,6 +46,16 @@ export default function AboutPage() {
         </li>
         <li>
           <a
+            href="https://medium.com/@autourducacao"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-amber-700 underline"
+          >
+            Medium — Articles approfondis
+          </a>
+        </li>
+        <li>
+          <a
             href="https://api.riverside.fm/hosting/7TYf1H62.rss"
             target="_blank"
             rel="noopener noreferrer"
