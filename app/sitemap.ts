@@ -1,16 +1,18 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/posts";
 import { fetchFeed } from "@/lib/rss";
+import { fetchYouTubeVideos } from "@/lib/youtube";
 
 const BASE_URL = "https://autourducacao.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const posts = getAllPosts();
-  const { episodes } = await fetchFeed();
+  const [{ episodes }, videos] = await Promise.all([fetchFeed(), fetchYouTubeVideos()]);
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
     { url: `${BASE_URL}/episodes`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    { url: `${BASE_URL}/videos`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
     { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${BASE_URL}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
   ];
@@ -29,5 +31,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...episodeRoutes, ...postRoutes];
+  const videoRoutes: MetadataRoute.Sitemap = videos.map((v) => ({
+    url: `${BASE_URL}/videos/${v.videoId}`,
+    lastModified: new Date(v.publishedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...episodeRoutes, ...videoRoutes, ...postRoutes];
 }
