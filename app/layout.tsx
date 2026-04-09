@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Image from "next/image";
 import Script from "next/script";
 import NewsletterForm from "@/components/NewsletterForm";
 
@@ -45,46 +46,59 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body className="min-h-full flex flex-col bg-amber-50 text-gray-900">
-        <header className="bg-amber-900 text-amber-50 px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold tracking-tight">
-            🍫 Autour du Cacao
+      <body className="min-h-full flex flex-col bg-cacao-50 text-gray-900">
+        <header className="bg-cacao-900 text-cacao-50 px-6 py-3 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/logo.jpg"
+              alt="Autour du Cacao"
+              width={120}
+              height={60}
+              className="h-10 w-auto object-contain bg-white rounded"
+              priority
+            />
           </Link>
           <nav className="flex gap-6 text-sm font-medium">
-            <Link href="/episodes" className="hover:text-amber-200 transition-colors">
+            <Link href="/episodes" className="hover:text-sage-300 transition-colors">
               Épisodes
             </Link>
-            <Link href="/videos" className="hover:text-amber-200 transition-colors">
+            <Link href="/videos" className="hover:text-sage-300 transition-colors">
               Vidéos
             </Link>
-            <Link href="/articles" className="hover:text-amber-200 transition-colors">
+            <Link href="/articles" className="hover:text-sage-300 transition-colors">
               Articles
             </Link>
-            <Link href="/blog" className="hover:text-amber-200 transition-colors">
+            <Link href="/blog" className="hover:text-sage-300 transition-colors">
               Blog
             </Link>
-            <Link href="/about" className="hover:text-amber-200 transition-colors">
+            <Link href="/about" className="hover:text-sage-300 transition-colors">
               À propos
             </Link>
-            <Link href="/newsletter" className="hover:text-amber-200 transition-colors">
+            <Link href="/newsletter" className="hover:text-sage-300 transition-colors">
               Newsletter
             </Link>
           </nav>
         </header>
         <main className="flex-1">{children}</main>
-        <footer className="bg-amber-900 text-amber-200 py-8 px-6">
+        <footer className="bg-cacao-900 text-cacao-200 py-8 px-6">
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-start justify-between">
             <div>
-              <p className="font-bold text-amber-100 mb-1">🍫 Autour du Cacao</p>
-              <p className="text-xs text-amber-400">Le podcast qui va au-delà du chocolat</p>
+              <Image
+                src="/logo.jpg"
+                alt="Autour du Cacao"
+                width={100}
+                height={50}
+                className="h-8 w-auto object-contain bg-white rounded mb-2"
+              />
+              <p className="text-xs text-cacao-400">Le podcast qui va au-delà du chocolat</p>
             </div>
             <div className="w-full md:w-72">
-              <p className="text-sm font-medium text-amber-100 mb-2">Newsletter</p>
-              <p className="text-xs text-amber-400 mb-3">Chaque épisode dans votre boîte mail.</p>
+              <p className="text-sm font-medium text-cacao-100 mb-2">Newsletter</p>
+              <p className="text-xs text-cacao-400 mb-3">Chaque épisode dans votre boîte mail.</p>
               <NewsletterForm variant="compact" />
             </div>
           </div>
-          <p className="text-center text-xs text-amber-600 mt-8">
+          <p className="text-center text-xs text-cacao-600 mt-8">
             © {new Date().getFullYear()} Autour du Cacao · autourducacao.com
           </p>
         </footer>

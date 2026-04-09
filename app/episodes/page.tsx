@@ -21,7 +21,7 @@ export default async function EpisodesPage() {
           />
         )}
         <div>
-          <h1 className="text-3xl font-bold text-amber-900 mb-1">{channel.title}</h1>
+          <h1 className="text-3xl font-bold text-cacao-900 mb-1">{channel.title}</h1>
           <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
             {channel.description}
           </p>
@@ -30,7 +30,7 @@ export default async function EpisodesPage() {
               href="https://api.riverside.fm/hosting/7TYf1H62.rss"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs bg-amber-100 text-amber-800 px-3 py-1 rounded-full hover:bg-amber-200 transition-colors"
+              className="text-xs bg-cacao-100 text-cacao-800 px-3 py-1 rounded-full hover:bg-cacao-200 transition-colors"
             >
               RSS Feed
             </a>
@@ -38,13 +38,13 @@ export default async function EpisodesPage() {
         </div>
       </div>
 
-      <h2 className="text-lg font-semibold text-amber-800 mb-6">
+      <h2 className="text-lg font-semibold text-cacao-800 mb-6">
         {episodes.length} Episode{episodes.length !== 1 ? "s" : ""}
       </h2>
 
       <ul className="space-y-6">
         {episodes.map((ep) => (
-          <li key={ep.guid} className="border-b border-amber-100 pb-6 last:border-0">
+          <li key={ep.guid} className="border-b border-cacao-100 pb-6 last:border-0">
             <div className="flex gap-4">
               {ep.imageUrl && (
                 <Image
@@ -57,7 +57,7 @@ export default async function EpisodesPage() {
               )}
               <div className="flex-1 min-w-0">
                 <Link href={`/episodes/${ep.guid}`} className="group">
-                  <h3 className="text-base font-semibold text-amber-900 group-hover:text-amber-700 leading-snug mb-1">
+                  <h3 className="text-base font-semibold text-cacao-900 group-hover:text-cacao-700 leading-snug mb-1">
                     {ep.title}
                   </h3>
                 </Link>

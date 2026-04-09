@@ -1,7 +1,7 @@
 export default function AboutPage() {
   return (
     <div className="max-w-2xl mx-auto py-16 px-6">
-      <h1 className="text-4xl font-bold text-amber-900 mb-6">À propos</h1>
+      <h1 className="text-4xl font-bold text-cacao-900 mb-6">À propos</h1>
       <p className="text-gray-700 leading-relaxed mb-4">
         <strong>Autour du Cacao</strong> est le podcast qui va au-delà du chocolat. Deux fois par
         mois, <strong>Willy Gabriel Mboukem II</strong> et <strong>Axel Emmanuel</strong> explorent
@@ -13,7 +13,7 @@ export default function AboutPage() {
         inspirant pour penser le cacao comme levier d&apos;impact, de souveraineté et de créativité.
       </p>
 
-      <h2 className="text-2xl font-semibold text-amber-800 mt-10 mb-4">Ce qu&apos;on couvre</h2>
+      <h2 className="text-2xl font-semibold text-cacao-800 mt-10 mb-4">Ce qu&apos;on couvre</h2>
       <ul className="list-disc list-inside space-y-2 text-gray-700">
         <li>Pulpe, coques et mucilage — applications et innovations</li>
         <li>Agriculture durable et agroforesterie</li>
@@ -22,14 +22,14 @@ export default function AboutPage() {
         <li>Portraits d&apos;acteurs qui réinventent la filière cacao</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold text-amber-800 mt-10 mb-4">Écouter</h2>
+      <h2 className="text-2xl font-semibold text-cacao-800 mt-10 mb-4">Écouter</h2>
       <ul className="space-y-2 text-gray-700">
         <li>
           <a
             href="https://open.spotify.com/show/4m30Q74ciNnpPuMalsKVYf"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-amber-700 underline"
+            className="text-cacao-700 underline"
           >
             Spotify
           </a>
@@ -39,7 +39,7 @@ export default function AboutPage() {
             href="https://www.youtube.com/@AutourduCacao"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-amber-700 underline"
+            className="text-cacao-700 underline"
           >
             YouTube — @AutourduCacao
           </a>
@@ -49,7 +49,7 @@ export default function AboutPage() {
             href="https://medium.com/@autourducacao"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-amber-700 underline"
+            className="text-cacao-700 underline"
           >
             Medium — Articles approfondis
           </a>
@@ -59,17 +59,17 @@ export default function AboutPage() {
             href="https://api.riverside.fm/hosting/7TYf1H62.rss"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-amber-700 underline"
+            className="text-cacao-700 underline"
           >
             RSS Feed
           </a>
         </li>
       </ul>
 
-      <h2 className="text-2xl font-semibold text-amber-800 mt-10 mb-4">Contact</h2>
+      <h2 className="text-2xl font-semibold text-cacao-800 mt-10 mb-4">Contact</h2>
       <p className="text-gray-700">
         Collaboration, invitations, questions ?{" "}
-        <a href="mailto:autourducacao@gmail.com" className="text-amber-700 underline">
+        <a href="mailto:autourducacao@gmail.com" className="text-cacao-700 underline">
           autourducacao@gmail.com
         </a>
       </p>

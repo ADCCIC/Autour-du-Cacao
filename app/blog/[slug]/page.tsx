@@ -55,7 +55,7 @@ export default async function BlogPostPage({
   return (
     <article className="max-w-2xl mx-auto py-16 px-6">
       <header className="mb-10">
-        <h1 className="text-4xl font-bold text-amber-900 mb-3 leading-tight">
+        <h1 className="text-4xl font-bold text-cacao-900 mb-3 leading-tight">
           {meta.title as string}
         </h1>
         <p className="text-sm text-gray-400">
@@ -65,7 +65,7 @@ export default async function BlogPostPage({
           {((meta.tags as string[]) ?? []).map((tag) => (
             <span
               key={tag}
-              className="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full"
+              className="text-xs bg-cacao-100 text-cacao-800 px-2 py-0.5 rounded-full"
             >
               {tag}
             </span>

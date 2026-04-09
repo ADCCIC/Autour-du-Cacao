@@ -26,7 +26,7 @@ export default async function EpisodePage({
     <div className="max-w-2xl mx-auto py-16 px-6">
       <Link
         href="/episodes"
-        className="text-sm text-amber-700 hover:text-amber-900 mb-8 inline-flex items-center gap-1"
+        className="text-sm text-cacao-700 hover:text-cacao-900 mb-8 inline-flex items-center gap-1"
       >
         ← {channel.title}
       </Link>
@@ -44,11 +44,11 @@ export default async function EpisodePage({
         )}
         <div className="flex-1 min-w-0">
           {episode.episodeNumber && (
-            <p className="text-xs font-medium text-amber-700 uppercase tracking-wider mb-1">
+            <p className="text-xs font-medium text-cacao-700 uppercase tracking-wider mb-1">
               Episode {episode.episodeNumber}
             </p>
           )}
-          <h1 className="text-2xl font-bold text-amber-900 leading-tight mb-2">
+          <h1 className="text-2xl font-bold text-cacao-900 leading-tight mb-2">
             {episode.title}
           </h1>
           <p className="text-sm text-gray-400">
@@ -60,7 +60,7 @@ export default async function EpisodePage({
 
       {/* Audio player */}
       {episode.audioUrl && isAudio && (
-        <div className="mb-8 bg-white rounded-2xl border border-amber-100 p-4 shadow-sm">
+        <div className="mb-8 bg-white rounded-2xl border border-cacao-100 p-4 shadow-sm">
           <audio
             controls
             className="w-full"
@@ -78,7 +78,7 @@ export default async function EpisodePage({
           <a
             href={episode.audioUrl}
             download
-            className="text-xs bg-amber-100 text-amber-800 px-3 py-1.5 rounded-full hover:bg-amber-200 transition-colors"
+            className="text-xs bg-cacao-100 text-cacao-800 px-3 py-1.5 rounded-full hover:bg-cacao-200 transition-colors"
           >
             Download MP3
           </a>

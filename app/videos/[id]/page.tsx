@@ -25,7 +25,7 @@ export default async function VideoPage({
     <div className="max-w-4xl mx-auto py-16 px-6">
       <Link
         href="/videos"
-        className="text-sm text-amber-700 hover:text-amber-900 mb-6 inline-flex items-center gap-1"
+        className="text-sm text-cacao-700 hover:text-cacao-900 mb-6 inline-flex items-center gap-1"
       >
         ← Toutes les vidéos
       </Link>
@@ -43,7 +43,7 @@ export default async function VideoPage({
 
       {/* Meta */}
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-amber-900 leading-tight mb-2">{video.title}</h1>
+        <h1 className="text-2xl font-bold text-cacao-900 leading-tight mb-2">{video.title}</h1>
         <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
           <span>{video.publishedAt}</span>
           <a
@@ -71,11 +71,11 @@ export default async function VideoPage({
       {/* Related */}
       {related.length > 0 && (
         <div className="mt-12">
-          <h2 className="text-lg font-semibold text-amber-900 mb-4">Autres vidéos</h2>
+          <h2 className="text-lg font-semibold text-cacao-900 mb-4">Autres vidéos</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {related.map((v) => (
               <Link key={v.videoId} href={`/videos/${v.videoId}`} className="group">
-                <div className="aspect-video bg-amber-50 rounded-xl overflow-hidden relative mb-2">
+                <div className="aspect-video bg-cacao-50 rounded-xl overflow-hidden relative mb-2">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={v.thumbnailUrl}
@@ -83,7 +83,7 @@ export default async function VideoPage({
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
                   />
                 </div>
-                <p className="text-xs font-medium text-amber-900 group-hover:text-amber-700 line-clamp-2 leading-snug">
+                <p className="text-xs font-medium text-cacao-900 group-hover:text-cacao-700 line-clamp-2 leading-snug">
                   {v.title}
                 </p>
               </Link>

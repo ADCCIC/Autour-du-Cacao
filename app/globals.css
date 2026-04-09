@@ -1,26 +1,47 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ─── Autour du Cacao — Brand Color Palette ─────────────────────────────── */
+/* Extracted from official brand guidelines (Brand Guidelines AUTOUR DU CACAO.pdf) */
+/* Primary: deep chocolate brown from the logo wordmark and cacao pod icon   */
+/* Accent:  sage/olive green from the microphone speech-bubble element        */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Cacao brown — primary brand color */
+  --color-cacao-50:  #fdf7f0;
+  --color-cacao-100: #f7e8d4;
+  --color-cacao-200: #eeccaa;
+  --color-cacao-300: #d9a374;
+  --color-cacao-400: #c07840;
+  --color-cacao-500: #9e5820;
+  --color-cacao-600: #7a4015;
+  --color-cacao-700: #5e2f0e;
+  --color-cacao-800: #4a2209;
+  --color-cacao-900: #3d1a00;
+  --color-cacao-950: #2a1000;
+
+  /* Sage green — secondary brand accent */
+  --color-sage-50:  #f4f8ef;
+  --color-sage-100: #e1ecd5;
+  --color-sage-200: #c3d8ab;
+  --color-sage-300: #9dbc7a;
+  --color-sage-400: #7d9e55;
+  --color-sage-500: #6e8b52;
+  --color-sage-600: #577040;
+  --color-sage-700: #435730;
+  --color-sage-800: #344424;
+  --color-sage-900: #293619;
+  --color-sage-950: #141c0d;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #ffffff;
+  --foreground: #1a0f00;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

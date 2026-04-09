@@ -6,7 +6,7 @@ export default function BlogIndexPage() {
 
   return (
     <div className="max-w-3xl mx-auto py-16 px-6">
-      <h1 className="text-4xl font-bold text-amber-900 mb-2">Blog</h1>
+      <h1 className="text-4xl font-bold text-cacao-900 mb-2">Blog</h1>
       <p className="text-gray-600 mb-12">
         Insights on cacao by-products, valorization, and the future of sustainable cacao.
       </p>
@@ -16,9 +16,9 @@ export default function BlogIndexPage() {
       ) : (
         <ul className="space-y-8">
           {posts.map((post) => (
-            <li key={post.slug} className="border-b border-amber-100 pb-8">
+            <li key={post.slug} className="border-b border-cacao-100 pb-8">
               <Link href={`/blog/${post.slug}`} className="group">
-                <h2 className="text-xl font-semibold text-amber-900 group-hover:text-amber-700 mb-1">
+                <h2 className="text-xl font-semibold text-cacao-900 group-hover:text-cacao-700 mb-1">
                   {post.title}
                 </h2>
               </Link>
@@ -30,7 +30,7 @@ export default function BlogIndexPage() {
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full"
+                    className="text-xs bg-cacao-100 text-cacao-800 px-2 py-0.5 rounded-full"
                   >
                     {tag}
                   </span>

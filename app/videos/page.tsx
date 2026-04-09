@@ -11,7 +11,7 @@ export default async function VideosPage() {
     <div className="max-w-5xl mx-auto py-16 px-6">
       <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
         <div>
-          <h1 className="text-4xl font-bold text-amber-900 mb-1">Vidéos</h1>
+          <h1 className="text-4xl font-bold text-cacao-900 mb-1">Vidéos</h1>
           <p className="text-gray-600">
             Toutes nos vidéos YouTube — interviews, portraits et reportages sur le cacao.
           </p>
@@ -34,9 +34,9 @@ export default async function VideosPage() {
           <Link
             key={video.videoId}
             href={`/videos/${video.videoId}`}
-            className="group bg-white rounded-2xl overflow-hidden border border-amber-100 shadow-sm hover:shadow-md transition-shadow"
+            className="group bg-white rounded-2xl overflow-hidden border border-cacao-100 shadow-sm hover:shadow-md transition-shadow"
           >
-            <div className="relative aspect-video bg-amber-50">
+            <div className="relative aspect-video bg-cacao-50">
               <Image
                 src={video.thumbnailUrl}
                 alt={video.title}
@@ -54,7 +54,7 @@ export default async function VideosPage() {
             </div>
             <div className="p-4">
               <p className="text-xs text-gray-400 mb-1">{video.publishedAt}</p>
-              <h2 className="text-sm font-semibold text-amber-900 group-hover:text-amber-700 leading-snug line-clamp-2">
+              <h2 className="text-sm font-semibold text-cacao-900 group-hover:text-cacao-700 leading-snug line-clamp-2">
                 {video.title}
               </h2>
             </div>

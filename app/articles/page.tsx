@@ -10,7 +10,7 @@ export default async function ArticlesPage() {
     <div className="max-w-4xl mx-auto py-16 px-6">
       <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
         <div>
-          <h1 className="text-4xl font-bold text-amber-900 mb-1">Articles</h1>
+          <h1 className="text-4xl font-bold text-cacao-900 mb-1">Articles</h1>
           <p className="text-gray-600">
             Nos articles approfondis sur Medium — analyses, portraits et innovations cacao.
           </p>
@@ -35,10 +35,10 @@ export default async function ArticlesPage() {
             href={article.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex gap-6 bg-white rounded-2xl border border-amber-100 shadow-sm hover:shadow-md transition-shadow p-6"
+            className="group flex gap-6 bg-white rounded-2xl border border-cacao-100 shadow-sm hover:shadow-md transition-shadow p-6"
           >
             {article.thumbnailUrl && (
-              <div className="relative w-32 h-24 flex-shrink-0 rounded-xl overflow-hidden bg-amber-50">
+              <div className="relative w-32 h-24 flex-shrink-0 rounded-xl overflow-hidden bg-cacao-50">
                 <Image
                   src={article.thumbnailUrl}
                   alt={article.title}
@@ -50,7 +50,7 @@ export default async function ArticlesPage() {
             )}
             <div className="flex-1 min-w-0">
               <p className="text-xs text-gray-400 mb-1">{article.publishedAt} · Medium</p>
-              <h2 className="text-lg font-semibold text-amber-900 group-hover:text-amber-700 leading-snug mb-2 line-clamp-2">
+              <h2 className="text-lg font-semibold text-cacao-900 group-hover:text-cacao-700 leading-snug mb-2 line-clamp-2">
                 {article.title}
               </h2>
               <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
@@ -61,7 +61,7 @@ export default async function ArticlesPage() {
                   {article.tags.slice(0, 4).map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full"
+                      className="text-xs bg-cacao-100 text-cacao-800 px-2 py-0.5 rounded-full"
                     >
                       {tag}
                     </span>
@@ -69,7 +69,7 @@ export default async function ArticlesPage() {
                 </div>
               )}
             </div>
-            <div className="flex-shrink-0 self-center text-amber-400 group-hover:text-amber-600 transition-colors">
+            <div className="flex-shrink-0 self-center text-cacao-400 group-hover:text-cacao-600 transition-colors">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
