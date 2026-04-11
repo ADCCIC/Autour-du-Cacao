@@ -29,13 +29,24 @@ export default async function VideosPage() {
         </a>
       </div>
 
+      {videos.length === 0 && (
+        <p className="text-gray-500 text-center py-20">
+          Aucune vidéo disponible pour le moment. Revenez bientôt.
+        </p>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {videos.map((video) => (
           <Link
             key={video.videoId}
             href={`/videos/${video.videoId}`}
-            className="group bg-white rounded-2xl overflow-hidden border border-cacao-100 shadow-sm hover:shadow-md transition-shadow"
+            className="group bg-white rounded-2xl overflow-hidden border border-cacao-100 shadow-sm hover:shadow-md transition-shadow relative"
           >
+            {video.featured && (
+              <span className="absolute top-2 left-2 z-10 bg-sage-600 text-white text-xs font-semibold px-2 py-0.5 rounded-full">
+                À la une
+              </span>
+            )}
             <div className="relative aspect-video bg-cacao-50">
               <Image
                 src={video.thumbnailUrl}

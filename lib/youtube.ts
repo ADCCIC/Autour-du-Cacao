@@ -1,3 +1,5 @@
+import pinnedVideosRaw from "@/content/videos.json";
+
 const CHANNEL_ID = "UCL_qC_RXbWoQ9bonFky5Fhw";
 const RSS_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
 
@@ -11,7 +13,12 @@ export interface YouTubeVideo {
   thumbnailUrl: string;
   embedUrl: string;
   watchUrl: string;
+  featured?: boolean;
 }
+
+// Statically defined/pinned videos from content/videos.json — always shown
+// even when the YouTube RSS feed is unreachable.
+const PINNED_VIDEOS: YouTubeVideo[] = pinnedVideosRaw as YouTubeVideo[];
 
 function extractTag(xml: string, tag: string): string {
   const m = xml.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`));
@@ -31,7 +38,7 @@ function formatDate(iso: string): string {
   }
 }
 
-export async function fetchYouTubeVideos(): Promise<YouTubeVideo[]> {
+async function fetchRSSVideos(): Promise<YouTubeVideo[]> {
   const res = await fetch(RSS_URL, { next: { revalidate: 3600 } });
   if (!res.ok) throw new Error(`YouTube RSS fetch failed: ${res.status}`);
   const xml = await res.text();
@@ -60,4 +67,26 @@ export async function fetchYouTubeVideos(): Promise<YouTubeVideo[]> {
       watchUrl: `https://www.youtube.com/watch?v=${videoId}`,
     };
   });
+}
+
+/**
+ * Returns videos from YouTube RSS feed merged with pinned videos.
+ * Pinned videos (content/videos.json) are always included — they appear first
+ * and act as a fallback when the RSS feed is unreachable.
+ * RSS videos that duplicate a pinned video ID are deduplicated.
+ */
+export async function fetchYouTubeVideos(): Promise<YouTubeVideo[]> {
+  let rssVideos: YouTubeVideo[] = [];
+
+  try {
+    rssVideos = await fetchRSSVideos();
+  } catch (err) {
+    console.warn("[youtube] RSS unavailable, falling back to pinned videos only:", err);
+  }
+
+  // Merge: pinned first, then RSS videos not already in pinned list
+  const pinnedIds = new Set(PINNED_VIDEOS.map((v) => v.videoId));
+  const dedupedRSS = rssVideos.filter((v) => !pinnedIds.has(v.videoId));
+
+  return [...PINNED_VIDEOS, ...dedupedRSS];
 }
